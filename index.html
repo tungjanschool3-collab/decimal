@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="ห้องทดลองเศษส่วนแบบลงสีสำหรับนักเรียน">
+  <title>ห้องทดลองเศษส่วนแสนสนุก</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="modes.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#"><span class="brand-mark">⅗</span><span>ห้องทดลองเศษส่วน</span></a>
+    <nav aria-label="เมนูหลัก"><a href="#lab">สร้างรูป</a><a href="#formula">เขียนสูตร</a><a href="#challenge">แบบฝึก</a></nav>
+    <button id="teacherMode" class="ghost">โหมดคุณครู</button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div><span class="eyebrow">คณิตศาสตร์ที่มองเห็นและสัมผัสได้</span><h1>ระบายสี แล้วเข้าใจ<br><em>เศษส่วน</em> ในพริบตา!</h1><p>สร้างเศษส่วน เศษเกิน และจำนวนคละจากภาพสีสดใส พร้อมเขียนสูตรและฝึกคิดไปทีละขั้น</p><a class="cta" href="#lab">เริ่มสร้างรูปเศษส่วน <span>→</span></a></div>
+      <div class="hero-art" aria-label="ตัวอย่างเศษส่วนสามส่วนสี่"><div class="pie-demo"><i></i><i></i><i></i><i></i></div><div class="float-card"><b>3</b><span></span><b>4</b></div><div class="spark s1">✦</div><div class="spark s2">✦</div></div>
+    </section>
+
+    <section id="lab" class="workspace">
+      <aside class="toolbox">
+        <h2>กล่องเครื่องมือ</h2>
+        <label>ชนิดของจำนวน</label>
+        <div class="mode-tabs" role="group" aria-label="เลือกชนิดของจำนวน"><button data-mode="fraction" class="active">เศษส่วน</button><button data-mode="improper">เศษเกิน</button><button data-mode="mixed">จำนวนคละ</button></div>
+        <label>รูปแบบภาพ</label>
+        <div class="segmented" role="group"><button data-shape="circle" class="active">◉ วงกลม</button><button data-shape="bar">▰ แถบ</button></div>
+        <label for="denominator">แบ่งเป็นกี่ส่วน</label>
+        <div class="stepper"><button data-step="denominator" data-delta="-1">−</button><output id="denominatorOut">4</output><button data-step="denominator" data-delta="1">+</button></div>
+        <label for="numerator">ระบายสีกี่ส่วน</label>
+        <div class="stepper accent"><button data-step="numerator" data-delta="-1">−</button><output id="numeratorOut">3</output><button data-step="numerator" data-delta="1">+</button></div>
+        <div id="wholeControl" hidden>
+          <label>จำนวนเต็ม</label><div class="stepper whole"><button data-step="whole" data-delta="-1">−</button><output id="wholeOut">1</output><button data-step="whole" data-delta="1">+</button></div>
+          <label>เศษที่เหลือ</label><div class="stepper accent"><button data-step="remainder" data-delta="-1">−</button><output id="remainderOut">1</output><button data-step="remainder" data-delta="1">+</button></div>
+        </div>
+        <label>เลือกสี</label>
+        <div id="palette" class="palette"><button data-color="#ff6b5f" class="active" style="--c:#ff6b5f"></button><button data-color="#7569f5" style="--c:#7569f5"></button><button data-color="#19bfa5" style="--c:#19bfa5"></button><button data-color="#ffb92e" style="--c:#ffb92e"></button><button data-color="#ef5da8" style="--c:#ef5da8"></button></div>
+        <button id="randomize" class="random">🎲 สุ่มโจทย์ใหม่</button>
+        <button id="reset" class="reset">↺ เริ่มใหม่</button>
+      </aside>
+
+      <section class="canvas-card" aria-live="polite">
+        <div class="canvas-head"><div><span class="mini">ภาพของฉัน</span><h2 id="reading">สามส่วนสี่</h2></div><div id="typeBadge" class="type-badge">เศษส่วนแท้</div></div>
+        <div id="visual" class="visual"></div>
+        <div class="fraction-readout"><span id="wholePart"></span><span class="frac"><b id="numText">3</b><i></i><b id="denText">4</b></span><span id="equalsText"> = ระบายสี 3 จาก 4 ส่วน</span></div>
+        <div id="conversion" class="conversion" hidden></div>
+        <p class="hint">แตะชิ้นส่วนในภาพเพื่อระบายสีหรือยกเลิกสีได้</p>
+      </section>
+    </section>
+
+    <section id="formula" class="formula-section">
+      <div class="section-title"><span class="eyebrow">เครื่องมือเขียนสูตร</span><h2>เปลี่ยนตัวเลขให้เป็นภาพ</h2><p>เลือกสัญลักษณ์หรือพิมพ์สูตร แล้วดูคำอธิบายทันที</p></div>
+      <div class="formula-card">
+        <div class="symbol-bar"><button data-insert=" + ">＋ บวก</button><button data-insert=" − ">− ลบ</button><button data-insert=" × ">× คูณ</button><button data-insert=" ÷ ">÷ หาร</button><button data-insert=" = ">= เท่ากับ</button><button data-insert="/">½ เศษส่วน</button></div>
+        <label for="formulaInput">เขียนสูตรของเรา</label>
+        <input id="formulaInput" value="3/4 + 1/4 = 1" autocomplete="off" spellcheck="false">
+        <div class="formula-preview"><span>แสดงผล</span><strong id="formulaPreview">¾ + ¼ = 1</strong></div>
+      </div>
+    </section>
+
+    <section id="challenge" class="challenge">
+      <div><span class="eyebrow">ลองทำดู!</span><h2>ส่วนที่ระบายสีคือเศษส่วนใด?</h2><div id="challengeVisual" class="challenge-visual"></div></div>
+      <div class="answers" id="answers"><button>2/5</button><button>3/5</button><button>3/4</button><button>4/5</button><p id="feedback">เลือกคำตอบที่ถูกต้อง</p></div>
+    </section>
+  </main>
+
+  <footer>สร้างมาเพื่อให้คณิตศาสตร์เป็นเรื่องสนุก 🌈 <span>รองรับคอมพิวเตอร์ แท็บเล็ต และมือถือ</span></footer>
+  <script src="app-v2.js"></script>
+</body>
+</html>
+
